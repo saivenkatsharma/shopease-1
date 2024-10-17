@@ -1,41 +1,47 @@
 .navbar {
-    background-color: #ff385c;
-    padding: 20px;
-    text-align: center;
-    color: white;
-  }
-  
-  .categories {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-  }
-  
-  .categories button {
-    padding: 10px;
-    border: none;
-    background-color: #ddd;
-    cursor: pointer;
-  }
-  
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .product-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .product-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-  }
-  
+  background-color: #3e63c8;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.categories button {
+  padding: 10px;
+  border: none;
+  background-color: #ddd; 
+  cursor: pointer;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.product-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain; 
+}
+
+.product-card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}

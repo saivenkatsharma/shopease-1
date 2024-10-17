@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from './ProductCard';
 
-const ProductList = ({ selectedCategory }) => {
+const ProductList = ({ selectedCategory, addToCart, onBuyNow }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,12 @@ const ProductList = ({ selectedCategory }) => {
   return (
     <div className="product-list">
       {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard 
+          key={product.id} 
+          product={product} 
+          addToCart={addToCart}
+          onBuyNow={onBuyNow} // Pass the onBuyNow function to ProductCard
+        />
       ))}
     </div>
   );
