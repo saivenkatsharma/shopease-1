@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Card, CardMedia, CardContent, Typography, Button, Box } from '@mui/material';
 
 const ProductCard = ({ product, addToCart, onBuyNow }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -10,56 +11,71 @@ const ProductCard = ({ product, addToCart, onBuyNow }) => {
   const handleBuyNow = () => {
     addToCart(product);
     alert("Redirecting to Cart...");
-    onBuyNow(); 
+    onBuyNow();
   };
 
   return (
-    <div className="product-card" style={styles.card}>
-      <img src={product.image} alt={product.title} style={styles.image} />
-      <h3 style={styles.title}>{product.title}</h3>
-      <h2 style={styles.price}>${product.price}</h2>
-      <p style={styles.description}>
-        {showFullDescription 
-          ? product.description 
-          : `${product.description.substring(0, 30)}... `}
-        <button onClick={toggleDescription} style={styles.toggleButton}>
-          {showFullDescription ? 'Show Less' : 'Read More'}
-        </button>
-      </p>
-      <div style={styles.buttonContainer}>
-        <button 
-          onClick={() => addToCart(product)} 
-          style={styles.addToCartButton}
-        >
-          Add to Cart
-        </button>
-        <button 
-          onClick={handleBuyNow} 
-          style={styles.buyNowButton}
-        >
-          Buy Now
-        </button>
-      </div>
-    </div>
+    <Card sx={styles.card}>
+      <CardMedia
+        component="img"
+        image={product.image}
+        alt={product.title}
+        sx={styles.image}
+      />
+      <CardContent>
+        <Typography variant="h6" sx={styles.title}>
+          {product.title}
+        </Typography>
+        <Typography variant="h5" sx={styles.price}>
+          ${product.price}
+        </Typography>
+        <Typography variant="body2" sx={styles.description}>
+          {showFullDescription 
+            ? product.description 
+            : `${product.description.substring(0, 30)}... `}
+          <Button onClick={toggleDescription} sx={styles.toggleButton}>
+            {showFullDescription ? 'Show Less' : 'Read More'}
+          </Button>
+        </Typography>
+        <Box sx={styles.buttonContainer}>
+          <Button 
+            onClick={() => addToCart(product)} 
+            variant="contained" 
+            sx={styles.addToCartButton}
+          >
+            Add to Cart
+          </Button>
+          <Button 
+            onClick={handleBuyNow} 
+            variant="contained" 
+            sx={styles.buyNowButton}
+          >
+            Buy Now
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
-
 
 const styles = {
   card: {
     border: '2px solid #4CAF50',
-    borderRadius: '5px',
+    borderRadius: '8px',
     padding: '16px',
     margin: '10px',
     textAlign: 'center',
-    maxWidth: '200px',
+    maxWidth: '240px',
     overflow: 'hidden',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#FFFFFF',
+    transition: 'transform 0.2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.05)', // Hover effect
+    },
   },
   image: {
-    maxWidth: '100%',
-    height: 'auto',
+    height: '200px',
+    objectFit: 'contain',
   },
   title: {
     fontSize: '1.2em',
@@ -76,12 +92,9 @@ const styles = {
   toggleButton: {
     marginTop: '5px',
     padding: '5px 10px',
-    border: 'none',
-    borderRadius: '5px',
-    backgroundColor: '#4CAF50',
-    color: '#fff',
+    color: '#4CAF50',
+    fontWeight: 'bold',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
   },
   buttonContainer: {
     marginTop: '10px',
@@ -89,21 +102,17 @@ const styles = {
   addToCartButton: {
     marginRight: '5px',
     padding: '10px 15px',
-    border: 'none',
-    borderRadius: '5px',
     backgroundColor: '#4CAF50',
-    color: '#fff',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
+    '&:hover': {
+      backgroundColor: '#388E3C',
+    },
   },
   buyNowButton: {
     padding: '10px 15px',
-    border: 'none',
-    borderRadius: '5px',
     backgroundColor: '#D32F2F',
-    color: '#fff',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
+    '&:hover': {
+      backgroundColor: '#C62828',
+    },
   },
 };
 
