@@ -1,4 +1,4 @@
-# Shopease
+# Shopease     https://shoppingmart22.netlify.app/
 
 ## Description
 Shopease is a modern e-commerce application built with React and Material UI. It allows users to browse products, add items to their cart, and manage their shopping experience seamlessly.
